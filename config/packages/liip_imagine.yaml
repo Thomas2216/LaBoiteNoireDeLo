@@ -1,0 +1,32 @@
+liip_imagine:
+    driver: "gd"
+
+    resolvers:
+        default:
+            web_path:
+                web_root: "%kernel.project_dir%/public"
+                cache_prefix: "media/cache"
+
+    loaders:
+        default:
+            filesystem:
+                data_root: "%kernel.project_dir%/public"
+
+    filter_sets:
+        cache: ~
+
+        # apercu grille 3 colonnes (accueil + portfolio)
+        photo_thumb:
+            format: webp
+            quality: 82
+            filters:
+                thumbnail: { size: [600, 600], mode: outbound }
+                strip: ~
+
+        # affichage plein ecran du portfolio detaille
+        photo_large:
+            format: webp
+            quality: 88
+            filters:
+                thumbnail: { size: [1600, 1600], mode: inset }
+                strip: ~

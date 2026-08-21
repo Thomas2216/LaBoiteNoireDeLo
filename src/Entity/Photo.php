@@ -4,8 +4,11 @@ namespace App\Entity;
 
 use App\Repository\PhotoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: PhotoRepository::class)]
+#[Vich\Uploadable]
 class Photo
 {
     #[ORM\Id]
@@ -26,11 +29,17 @@ class Photo
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageName = null;
 
+    #[Vich\UploadableField(mapping: 'photo_image', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
     #[ORM\Column]
     private ?int $position = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
 
     public function getId(): ?int
     {
@@ -85,6 +94,23 @@ class Photo
         return $this;
     }
 
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile = null): static
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            // required so Doctrine detects a change and Vich's listener fires on update
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
     public function getPosition(): ?int
     {
         return $this->position;
@@ -105,6 +131,18 @@ class Photo
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

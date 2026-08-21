@@ -18,3 +18,12 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+###> vich/uploader-bundle ###
+/public/uploads/photos/*
+!/public/uploads/photos/.gitkeep
+###< vich/uploader-bundle ###
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
