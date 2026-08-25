@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: PhotoRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 #[Vich\Uploadable]
 class Photo
 {
@@ -145,5 +146,13 @@ class Photo
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    #[ORM\PrePersist]
+    public function setCreatedAtValue(): void
+    {
+        if (null === $this->createdAt) {
+            $this->createdAt = new \DateTimeImmutable();
+        }
     }
 }
