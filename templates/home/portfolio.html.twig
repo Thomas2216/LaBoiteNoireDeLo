@@ -9,15 +9,15 @@
         'photographie-associative': 'Artistique, luttes sociales, tiers-lieux',
     } %}
 
-    <div class="section-title" style="padding-top:50px;"><span style="font-size:28px;">PORTFOLIO</span></div>
+    <div class="section-title container" style="padding-top:50px;"><span style="font-size:28px;">PORTFOLIO</span></div>
     <div class="rule"></div>
 
     {% if sections is empty %}
-        <div class="empty-state">Aucune categorie pour le moment.</div>
+        <div class="empty-state container">Aucune categorie pour le moment.</div>
     {% endif %}
 
     {% for section in sections %}
-        <div class="category-block">
+        <div class="category-block container">
             <h3>{{ section.categorie.nom }}</h3>
             {% if descriptions[section.categorie.slug] is defined %}
                 <span class="sub">{{ descriptions[section.categorie.slug] }}</span>
@@ -25,9 +25,9 @@
         </div>
 
         {% if section.photos is empty %}
-            <div class="empty-state">Photos a venir dans cette categorie.</div>
+            <div class="empty-state container">Photos a venir dans cette categorie.</div>
         {% else %}
-            <div class="gallery-grid">
+            <div class="gallery-grid container">
                 {% for photo in section.photos %}
                     <div class="cell">
                         {% if photo.imageName %}

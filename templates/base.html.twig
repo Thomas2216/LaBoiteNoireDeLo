@@ -12,18 +12,20 @@
         {% endblock %}
     </head>
     <body>
-        <div class="wrap">
-            {% include 'partials/_header.html.twig' %}
+        {% include 'partials/_header.html.twig' %}
 
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="flash{{ label == 'error' ? ' error' : '' }}">{{ message }}</div>
+        {% if app.flashes|length %}
+            <div class="flash-wrap container">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="flash{{ label == 'error' ? ' error' : '' }}">{{ message }}</div>
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
+            </div>
+        {% endif %}
 
-            {% block body %}{% endblock %}
+        {% block body %}{% endblock %}
 
-            {% include 'partials/_footer.html.twig' %}
-        </div>
+        {% include 'partials/_footer.html.twig' %}
     </body>
 </html>

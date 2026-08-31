@@ -23,10 +23,11 @@ liip_imagine:
                 thumbnail: { size: [600, 600], mode: outbound }
                 strip: ~
 
-        # affichage plein ecran du portfolio detaille
+        # affichage plein ecran du portfolio detaille - large pour rester net
+        # en full-bleed sur les tres grands ecrans (photo-titre-bloc)
         photo_large:
             format: webp
             quality: 88
             filters:
-                thumbnail: { size: [1600, 1600], mode: inset }
+                thumbnail: { size: [2400, 2400], mode: inset }
                 strip: ~

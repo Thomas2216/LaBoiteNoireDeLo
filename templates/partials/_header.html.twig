@@ -1,8 +1,10 @@
 <header class="site">
-    <a href="{{ path('home') }}" class="logo">LA BOITE NOIRE DE LO</a>
-    <nav>
-        <a href="{{ path('home') }}" class="{{ app.current_route == 'home' ? 'active' : '' }}">Accueil</a>
-        <a href="{{ path('portfolio') }}" class="{{ app.current_route == 'portfolio' ? 'active' : '' }}">Portfolio</a>
-        <a href="{{ path('contact') }}" class="{{ app.current_route starts with 'contact' ? 'active' : '' }}">Contact</a>
-    </nav>
+    <div class="header-inner container">
+        <a href="{{ path('home') }}" class="logo">LA BOITE NOIRE DE LO</a>
+        <nav>
+            <a href="{{ path('home') }}" class="{{ app.current_route == 'home' ? 'active' : '' }}">Accueil</a>
+            <a href="{{ path('portfolio') }}" class="{{ app.current_route == 'portfolio' ? 'active' : '' }}">Portfolio</a>
+            <a href="{{ path('contact') }}" class="{{ app.current_route starts with 'contact' ? 'active' : '' }}">Contact</a>
+        </nav>
+    </div>
 </header>

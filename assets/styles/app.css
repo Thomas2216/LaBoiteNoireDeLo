@@ -19,6 +19,7 @@
   --accent: #1D9E75;
   --accent-light: #5DCAA5;
   --placeholder: #33312c;
+  --reading-width: 780px;
 }
 
 * { box-sizing: border-box; }
@@ -32,17 +33,29 @@ body {
 
 a { color: inherit; }
 
-.wrap {
-  max-width: 720px;
-  margin: 0 auto;
+/*
+ * Reading column: used by every text section (nav/footer content, about,
+ * prestations, portfolio blocks, contact form...) so lines stay comfortable
+ * to read even on very large screens. The elements carrying this class keep
+ * their own vertical/horizontal padding; this only caps + centers the width.
+ * Full-bleed elements (header/footer backgrounds, .photo-block) simply don't
+ * get this class and span the full viewport width instead.
+ */
+.container {
+  max-width: var(--reading-width);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 header.site {
+  border-bottom: 0.5px solid var(--accent);
+}
+
+header.site .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 22px 28px;
-  border-bottom: 0.5px solid var(--accent);
 }
 
 header.site .logo {
@@ -96,7 +109,7 @@ header.site nav a:hover {
   font-family: 'Poppins', sans-serif; font-weight: 800;
   letter-spacing: 1px;
   color: var(--text);
-  max-width: 70%;
+  max-width: min(70%, 480px);
 }
 
 .title-tag.left {
@@ -161,8 +174,11 @@ header.site nav a:hover {
 }
 
 .about {
-  padding: 50px 28px;
   background: #0f0e0c;
+}
+
+.about .about-inner {
+  padding: 50px 28px;
   display: flex;
   gap: 16px;
   align-items: flex-start;
@@ -261,8 +277,12 @@ header.site nav a:hover {
 
 footer.contact-block {
   border-top: 0.5px solid var(--accent);
-  padding: 40px 28px 50px;
+  padding: 40px 0 50px;
   text-align: center;
+}
+
+footer.contact-block .footer-inner {
+  padding: 0 28px;
 }
 
 footer.contact-block h2 {
@@ -286,12 +306,15 @@ footer.contact-block .coords .mail { color: var(--accent-light); }
 footer.contact-block .coords a { text-decoration: none; }
 
 .flash {
-  margin: 20px 28px 0;
   padding: 12px 16px;
   border: 0.5px solid var(--accent);
   border-radius: 2px;
   font-size: 12px;
   color: var(--accent-light);
+}
+
+.flash-wrap {
+  padding: 20px 28px 0;
 }
 
 .flash.error {

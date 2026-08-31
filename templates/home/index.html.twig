@@ -4,7 +4,7 @@
 
 {% block body %}
     {% if photos is empty %}
-        <div class="empty-state">Les photos arrivent bientot.</div>
+        <div class="empty-state container">Les photos arrivent bientot.</div>
     {% else %}
         {{ component('PhotoTitreBloc', { photo: photos[0], align: 'left', size: 32 }) }}
 
@@ -18,21 +18,23 @@
     {% endif %}
 
     <div class="about">
-        <div class="avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-        </div>
-        <div>
-            <h2>A MON SUJET</h2>
-            <p>Laura Joly, ancienne travailleuse sociale fraichement reconvertie dans la diffusion de spectacle vivant, je m'interesse particulierement a l'art de rue. Selon moi, les spectacles et evenements engages permettent d'ouvrir les regards, de federer et de toucher le coeur du public. A travers ma boite noire, j'aime saisir les emotions a la volee.</p>
+        <div class="about-inner container">
+            <div class="avatar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </div>
+            <div>
+                <h2>A MON SUJET</h2>
+                <p>Laura Joly, ancienne travailleuse sociale fraichement reconvertie dans la diffusion de spectacle vivant, je m'interesse particulierement a l'art de rue. Selon moi, les spectacles et evenements engages permettent d'ouvrir les regards, de federer et de toucher le coeur du public. A travers ma boite noire, j'aime saisir les emotions a la volee.</p>
+            </div>
         </div>
     </div>
 
-    <div class="section-title"><span>MES PRESTATIONS</span></div>
+    <div class="section-title container"><span>MES PRESTATIONS</span></div>
     <div class="rule"></div>
-    <div class="prestations">
+    <div class="prestations container">
         <div class="prestation">
             <p><span class="label">PHOTOGRAPHIE DE SPECTACLE</span><br>Captation, repetitions, portraits d'artistes, diffusion</p>
         </div>
