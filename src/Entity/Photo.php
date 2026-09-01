@@ -45,6 +45,9 @@ class Photo
     #[ORM\Column]
     private bool $estPortrait = false;
 
+    #[ORM\Column]
+    private bool $miseEnAvant = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -159,6 +162,18 @@ class Photo
     public function setEstPortrait(bool $estPortrait): static
     {
         $this->estPortrait = $estPortrait;
+
+        return $this;
+    }
+
+    public function isMiseEnAvant(): bool
+    {
+        return $this->miseEnAvant;
+    }
+
+    public function setMiseEnAvant(bool $miseEnAvant): static
+    {
+        $this->miseEnAvant = $miseEnAvant;
 
         return $this;
     }

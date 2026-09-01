@@ -50,6 +50,8 @@ class PhotoCrudController extends AbstractCrudController
         yield IntegerField::new('position');
         yield BooleanField::new('estPortrait', 'Utiliser comme photo de profil (section A propos)')
             ->renderAsSwitch(true);
+        yield BooleanField::new('miseEnAvant', 'Mettre en avant sur la page d\'accueil')
+            ->renderAsSwitch(true);
         yield DateTimeField::new('createdAt')->hideOnForm();
     }
 }

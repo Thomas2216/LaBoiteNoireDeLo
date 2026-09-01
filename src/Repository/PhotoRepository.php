@@ -22,9 +22,11 @@ class PhotoRepository extends ServiceEntityRepository
     }
 
     /**
-     * Photos with a category, for public portfolio-style listings. Photos
-     * without a category (e.g. the "A propos" portrait) are never part of
-     * the portfolio, so they're excluded here.
+     * Photos explicitly flagged for the homepage gallery (miseEnAvant).
+     * Photos without a category or used as the "A propos" portrait are
+     * never eligible, regardless of the flag. Ordered by position, with a
+     * stable secondary sort by id since position is only meaningful within
+     * a category and several featured photos can share the same value.
      *
      * @return Photo[]
      */
@@ -33,7 +35,9 @@ class PhotoRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->andWhere('p.categorie IS NOT NULL')
             ->andWhere('p.estPortrait = false')
+            ->andWhere('p.miseEnAvant = true')
             ->orderBy('p.position', 'ASC')
+            ->addOrderBy('p.id', 'ASC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
