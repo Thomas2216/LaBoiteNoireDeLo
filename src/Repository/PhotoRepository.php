@@ -16,6 +16,11 @@ class PhotoRepository extends ServiceEntityRepository
         parent::__construct($registry, Photo::class);
     }
 
+    public function findPortrait(): ?Photo
+    {
+        return $this->findOneBy(['estPortrait' => true]);
+    }
+
     //    /**
     //     * @return Photo[] Returns an array of Photo objects
     //     */

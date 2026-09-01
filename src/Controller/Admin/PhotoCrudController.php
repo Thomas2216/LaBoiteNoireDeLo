@@ -6,6 +6,7 @@ use App\Entity\Photo;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -45,6 +46,8 @@ class PhotoCrudController extends AbstractCrudController
             ->onlyOnForms();
 
         yield IntegerField::new('position');
+        yield BooleanField::new('estPortrait', 'Utiliser comme photo de profil (section A propos)')
+            ->renderAsSwitch(true);
         yield DateTimeField::new('createdAt')->hideOnForm();
     }
 }

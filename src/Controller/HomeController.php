@@ -17,6 +17,7 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'photos' => $photos,
+            'portrait' => $photoRepository->findPortrait(),
         ]);
     }
 

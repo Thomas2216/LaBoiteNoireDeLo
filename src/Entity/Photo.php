@@ -42,6 +42,9 @@ class Photo
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Column]
+    private bool $estPortrait = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -144,6 +147,18 @@ class Photo
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function isEstPortrait(): bool
+    {
+        return $this->estPortrait;
+    }
+
+    public function setEstPortrait(bool $estPortrait): static
+    {
+        $this->estPortrait = $estPortrait;
 
         return $this;
     }
