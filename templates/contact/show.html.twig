@@ -10,7 +10,7 @@
         Un projet, une envie de collaboration ? Ecrivez-moi, je reviens vers vous rapidement avec un devis adapte.
     </p>
 
-    {{ form_start(form, { attr: { class: 'contact-form' } }) }}
+    {{ form_start(form, { attr: { class: 'contact-form reveal', 'data-controller': 'reveal' } }) }}
         {{ form_row(form.nom, { attr: { placeholder: 'Votre nom' } }) }}
         {{ form_row(form.email, { attr: { placeholder: 'vous@exemple.fr' } }) }}
         {{ form_row(form.prestation) }}

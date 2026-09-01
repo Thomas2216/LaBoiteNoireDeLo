@@ -67,16 +67,44 @@ header.site .logo {
 }
 
 header.site nav a {
+  position: relative;
   color: var(--text-muted);
   text-decoration: none;
   font-size: 13px;
   margin-left: 22px;
   letter-spacing: 0.5px;
+  padding-bottom: 3px;
 }
 
-header.site nav a.active,
-header.site nav a:hover {
+header.site nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent-light);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease;
+}
+
+header.site nav a.active {
   color: var(--accent-light);
+}
+
+header.site nav a.active::after {
+  transform: scaleX(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  header.site nav a:hover {
+    color: var(--accent-light);
+  }
+
+  header.site nav a:hover::after {
+    transform: scaleX(1);
+  }
 }
 
 .photo-block {
@@ -93,6 +121,13 @@ header.site nav a:hover {
   display: block;
   width: 100%;
   height: auto;
+  transition: transform 380ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .photo-block:hover img {
+    transform: scale(1.04);
+  }
 }
 
 .photo-block .placeholder-icon {
@@ -110,6 +145,7 @@ header.site nav a:hover {
   letter-spacing: 1px;
   color: var(--text);
   max-width: min(70%, 480px);
+  transition: border-color 300ms ease, border-width 300ms ease;
 }
 
 .title-tag.left {
@@ -124,6 +160,18 @@ header.site nav a:hover {
   right: 0;
   border-right: 2px solid var(--accent);
   text-align: right;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .photo-block:hover .title-tag.left {
+    border-left-width: 4px;
+    border-left-color: var(--accent-light);
+  }
+
+  .photo-block:hover .title-tag.right {
+    border-right-width: 4px;
+    border-right-color: var(--accent-light);
+  }
 }
 
 .caption {
@@ -239,6 +287,13 @@ header.site nav a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 380ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery-grid .cell:hover img {
+    transform: scale(1.04);
+  }
 }
 
 .gallery-grid .cell .placeholder-icon {
@@ -373,6 +428,9 @@ form.contact-form ul {
 }
 
 form.contact-form button {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
   margin-top: 8px;
   background: transparent;
   border: 0.5px solid var(--accent);
@@ -384,8 +442,84 @@ form.contact-form button {
   padding: 12px 24px;
   border-radius: 2px;
   cursor: pointer;
+  transition: color 320ms ease;
 }
 
-form.contact-form button:hover {
-  background: var(--bg-alt);
+form.contact-form button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 320ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  form.contact-form button:hover {
+    color: var(--bg);
+  }
+
+  form.contact-form button:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+/* Scroll reveal — driven by assets/controllers/reveal_controller.js */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 550ms ease, transform 550ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+}
+
+/* GLightbox — reskin the default (light) theme to match the site's dark palette */
+.glightbox-clean .gslide-description {
+  background: var(--bg-alt) !important;
+}
+
+.glightbox-clean .gslide-title {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.5px;
+  color: var(--text) !important;
+  font-size: 15px !important;
+  margin-bottom: 8px !important;
+}
+
+.glightbox-clean .gslide-desc {
+  font-family: 'Inter', sans-serif !important;
+  font-style: italic;
+  color: var(--text-faint) !important;
+  font-size: 12px !important;
+}
+
+.goverlay {
+  background: rgba(6, 5, 4, 0.96) !important;
+}
+
+.gclose,
+.gnext,
+.gprev {
+  background-color: rgba(12, 11, 10, 0.75) !important;
+  transition: background-color 250ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gclose:hover,
+  .gnext:hover,
+  .gprev:hover {
+    background-color: var(--accent) !important;
+  }
 }

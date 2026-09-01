@@ -25,4 +25,11 @@ return [
     '@hotwired/turbo' => [
         'version' => '8.0.23',
     ],
+    'glightbox' => [
+        'version' => '3.3.1',
+    ],
+    'glightbox/dist/css/glightbox.min.css' => [
+        'version' => '3.3.1',
+        'type' => 'css',
+    ],
 ];
