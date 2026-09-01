@@ -32,7 +32,9 @@ class PhotoCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->onlyOnIndex();
-        yield AssociationField::new('categorie');
+        yield AssociationField::new('categorie')
+            ->setRequired(false)
+            ->setHelp('Obligatoire pour une photo de portfolio. Laisser vide pour une photo hors portfolio (ex. la photo de profil).');
         yield TextField::new('titre');
         yield TextField::new('legende');
 

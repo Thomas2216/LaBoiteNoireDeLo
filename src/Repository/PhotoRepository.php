@@ -21,6 +21,24 @@ class PhotoRepository extends ServiceEntityRepository
         return $this->findOneBy(['estPortrait' => true]);
     }
 
+    /**
+     * Photos with a category, for public portfolio-style listings. Photos
+     * without a category (e.g. the "A propos" portrait) are never part of
+     * the portfolio, so they're excluded here.
+     *
+     * @return Photo[]
+     */
+    public function findForPublicGallery(int $limit): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.categorie IS NOT NULL')
+            ->andWhere('p.estPortrait = false')
+            ->orderBy('p.position', 'ASC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Photo[] Returns an array of Photo objects
     //     */

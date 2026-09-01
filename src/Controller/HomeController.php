@@ -13,7 +13,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home', methods: ['GET'])]
     public function index(PhotoRepository $photoRepository): Response
     {
-        $photos = $photoRepository->findBy([], ['position' => 'ASC'], 4);
+        $photos = $photoRepository->findForPublicGallery(4);
 
         return $this->render('home/index.html.twig', [
             'photos' => $photos,
@@ -29,7 +29,7 @@ class HomeController extends AbstractController
         $sections = array_map(
             static fn ($categorie) => [
                 'categorie' => $categorie,
-                'photos' => $photoRepository->findBy(['categorie' => $categorie], ['position' => 'ASC']),
+                'photos' => $photoRepository->findBy(['categorie' => $categorie, 'estPortrait' => false], ['position' => 'ASC']),
             ],
             $categories,
         );
