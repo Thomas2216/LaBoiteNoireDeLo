@@ -59,11 +59,15 @@ header.site .header-inner {
 }
 
 header.site .logo {
-  font-family: 'Poppins', sans-serif; font-weight: 800;
-  font-size: 18px;
-  letter-spacing: 1px;
-  color: var(--text);
-  text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+header.site .logo img {
+  display: block;
+  height: 44px;
+  width: auto;
 }
 
 header.site nav a {
@@ -204,21 +208,47 @@ header.site nav a.active::after {
   padding: 0 28px 50px;
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 40px;
 }
 
-.prestation p {
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.9;
+.prestation {
   text-align: center;
-  margin: 0;
 }
 
 .prestation .label {
+  display: block;
   color: var(--accent-light);
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.prestation ul {
+  display: inline-block;
+  text-align: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.prestation li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.9;
+}
+
+.prestation li + li {
+  margin-top: 2px;
+}
+
+.prestation li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
 }
 
 .about {
