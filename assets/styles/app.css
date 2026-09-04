@@ -1,12 +1,17 @@
 @font-face {
   font-family: 'Poppins';
-  src: url('../fonts/Poppins-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
+  src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
 }
 @font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter-Variable.ttf') format('truetype');
-  font-weight: 100 900;
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
 }
 
 :root {
@@ -28,7 +33,8 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
 }
 
 a { color: inherit; }
@@ -61,13 +67,35 @@ header.site .header-inner {
 header.site .logo {
   display: flex;
   align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+header.site .logo-icon {
+  display: block;
+  height: 40px;
+  width: auto;
   flex-shrink: 0;
 }
 
-header.site .logo img {
-  display: block;
-  height: 44px;
-  width: auto;
+header.site .logo-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  header.site .logo-text {
+    display: none;
+  }
+
+  header.site .logo-icon {
+    height: 36px;
+  }
 }
 
 header.site nav a {
@@ -212,7 +240,8 @@ header.site nav a.active::after {
 }
 
 .prestation {
-  text-align: center;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .prestation .label {
@@ -222,11 +251,10 @@ header.site nav a.active::after {
   font-weight: 500;
   letter-spacing: 0.5px;
   margin-bottom: 12px;
+  text-align: center;
 }
 
 .prestation ul {
-  display: inline-block;
-  text-align: left;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -440,7 +468,7 @@ form.contact-form textarea {
   border-radius: 2px;
   padding: 10px 12px;
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 13px;
 }
 
@@ -472,7 +500,7 @@ form.contact-form button {
   background: transparent;
   border: 0.5px solid var(--accent);
   color: var(--accent-light);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.5px;
@@ -536,7 +564,7 @@ form.contact-form button::before {
 }
 
 .glightbox-clean .gslide-desc {
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Poppins', sans-serif !important;
   font-style: italic;
   color: var(--text-faint) !important;
   font-size: 12px !important;
